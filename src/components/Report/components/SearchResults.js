@@ -4,7 +4,11 @@ import React, { useEffect, useState } from "react";
 import { Button, Pagination } from "antd";
 import * as Style from "../../../styles/FormSection";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowAll, setPageNumber } from "../../../reducer/store";
+import {
+  setShowAll,
+  setPageNumber,
+  setSearchResult,
+} from "../../../reducer/store";
 
 const SearchResult = ({ type }) => {
   const dispatch = useDispatch();
@@ -24,6 +28,7 @@ const SearchResult = ({ type }) => {
 
   // Pagination page change data
   const onToogleChangePage = (type) => {
+    dispatch(setSearchResult({ text: "", type: type }));
     switch (type) {
       // Return first page
       case "first":

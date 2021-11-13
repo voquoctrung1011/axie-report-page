@@ -1,14 +1,17 @@
 import React from "react";
 import * as Style from "../../../styles/FormSection";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSearchResult } from "../../../reducer/store";
 
-const Search = (type) => {
+const Search = ({ type }) => {
   const dispatch = useDispatch();
   // search item table
   const onToggleSearch = (e) => {
     dispatch(
-      setSearchResult({ text: e.target.value.toLowerCase(), type: type.type })
+      setSearchResult({
+        text: e.target.value.toLowerCase(),
+        type: type,
+      })
     );
   };
 
@@ -23,6 +26,7 @@ const Search = (type) => {
       </Style.svg>
       <Style.Inputt
         onChange={onToggleSearch}
+        name={type}
         type="text"
         data-testid="gene-search-input"
         placeholder="Search for trait or part..."
