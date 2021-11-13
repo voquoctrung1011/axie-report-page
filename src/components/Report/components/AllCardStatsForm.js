@@ -1,14 +1,17 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from "react";
 import { Input } from "antd";
 import * as Style from "../../../styles/AllCardStatsForm";
+
+const iWidth = { width: "100px", minWidth: "unset" };
 
 const AllCardStatsForm = () => {
   return (
     <Style.AllCardStatsForm>
       <Style.FormSection>
-        <div className="FormSection-header-wrap">
-          <h2>Card Stats</h2>
-        </div>
+        <Style.FormSectionHeaderWrap>
+          <Style.Title>Card Stats</Style.Title>
+        </Style.FormSectionHeaderWrap>
         <Style.FormSectionBodyWrap>
           <Style.container>
             <Style.MinimumAttack>
@@ -20,8 +23,7 @@ const AllCardStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
-                  min="0"
-                  step="5"
+                  style={iWidth}
                   placeholder="0"
                   id="minimum-attack"
                   defaultValue="0"
@@ -37,8 +39,7 @@ const AllCardStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
-                  min="0"
-                  step="5"
+                  style={iWidth}
                   placeholder="0"
                   id="minimum-defence"
                   defaultValue="0"

@@ -132,7 +132,10 @@ h2 {
   color: #fff;
   margin-bottom: 6px;
 }
-
+.input-wrap {
+  display: flex;
+  align-items: center;
+}
 .input-wrap input {
   padding: 10px 15px;
   background: #282b39;

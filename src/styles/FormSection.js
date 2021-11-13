@@ -1,7 +1,16 @@
 import styled from "styled-components";
 
 export const FormSection = styled.div``;
-export const FormSectionHeaderWrap = styled.div``;
+export const FormSectionHeaderWrap = styled.div`
+  border-bottom: 1px solid #3a3f50;
+  margin-bottom: 6px;
+`;
+export const Title = styled.h2`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  color: #fff;
+`;
 export const FormSectionBodyWrap = styled.div``;
 export const AllGenesInput = styled.div`
   margin-bottom: 30px;

@@ -84,10 +84,10 @@ const SearchResult = ({ type }) => {
   };
 
   // return data show
-  const ShowPages = (start, page) => {
+  const ShowPages = (start, end) => {
     if (pageResult) {
       return pageResult
-        .slice(start ? start : 0, page ? page : 5)
+        .slice(start ? start : 0, end ? end : 5)
         .filter(
           (o) =>
             o.eyes.toLowerCase().includes(searchResult.text) ||

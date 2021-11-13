@@ -3,6 +3,8 @@ import { Input, Checkbox } from "antd";
 import * as Style from "../../../styles/BreedAndClassForm";
 import { useSelector } from "react-redux";
 
+const iWidth = { width: "230px", minWidth: "unset" };
+
 const BreedAndClassForm = () => {
   const listCheckbox = useSelector((state) => state.store.listCheckbox);
 
@@ -14,7 +16,7 @@ const BreedAndClassForm = () => {
     <Style.BreedAndClassForm>
       <Style.FormSection>
         <Style.FormSectionHeaderWrap>
-          <h2>Breed and Class</h2>
+          <Style.Title>Breed and Class</Style.Title>
         </Style.FormSectionHeaderWrap>
         <Style.FormSectionBodyWrap>
           <Style.MaximumBreedCount>
@@ -24,10 +26,8 @@ const BreedAndClassForm = () => {
             <div className="input-wrap">
               <Input
                 type="number"
-                min="0"
-                max="7"
-                step="1"
                 id="maximum-breed-count"
+                style={iWidth}
                 placeholder="2"
                 defaultValue="7"
                 className=""

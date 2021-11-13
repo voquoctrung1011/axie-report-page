@@ -1,12 +1,14 @@
 import React from "react";
 import * as Style from "../../../styles/AllPurityForm";
 
+const iWidth = { width: "120px", minWidth: "unset" };
+
 const AllPurityForm = () => {
   return (
     <Style.AllPurityForm>
       <Style.FormSection>
         <Style.FormSectionHeaderWrap>
-          <h2>Purity</h2>
+          <Style.Title>Purity</Style.Title>
         </Style.FormSectionHeaderWrap>
         <Style.FormSectionBodyWrap>
           <Style.container>
@@ -17,9 +19,7 @@ const AllPurityForm = () => {
               <div className="input-wrap">
                 <input
                   type="number"
-                  min="0"
-                  step="1"
-                  max="6"
+                  style={iWidth}
                   id="minimum-pureness"
                   placeholder="1"
                   defaultValue="0"
@@ -33,9 +33,7 @@ const AllPurityForm = () => {
               <div className="input-wrap">
                 <input
                   type="number"
-                  min="0"
-                  step="5"
-                  max="100"
+                  style={iWidth}
                   id="minimum-purity"
                   placeholder="50"
                   defaultValue="0"

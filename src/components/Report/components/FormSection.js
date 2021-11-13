@@ -39,7 +39,7 @@ const FormSection = () => {
   return (
     <Style.FormSection>
       <Style.FormSectionHeaderWrap>
-        <h2>Genes</h2>
+        <Style.Title>Genes</Style.Title>
       </Style.FormSectionHeaderWrap>
       <Style.FormSectionBodyWrap>
         <Style.AllGenesInput>

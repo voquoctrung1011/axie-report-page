@@ -38,3 +38,9 @@ export const Li = styled.li`
   margin-bottom: 10px;
   border: none;
 `;
+export const Title = styled.h2`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  color: #fff;
+`;

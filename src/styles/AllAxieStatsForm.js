@@ -32,3 +32,9 @@ export const MinimumSkill = styled.div`
 export const MinimumMorale = styled.div`
   max-width: 300px;
 `;
+export const Title = styled.h2`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  color: #fff;
+`;

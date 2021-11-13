@@ -23,3 +23,9 @@ export const MinimumDefence = styled.div`
 `;
 export const MinPurenessForm = styled.div``;
 export const MinPurityForm = styled.div``;
+export const Title = styled.h2`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  color: #fff;
+`;

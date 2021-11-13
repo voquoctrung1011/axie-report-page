@@ -2,12 +2,14 @@ import React from "react";
 import { Input } from "antd";
 import * as Style from "../../../styles/AllAxieStatsForm";
 
+const iWidth = { width: "130px", minWidth: "unset" };
+
 const AllAxieStatsForm = () => {
   return (
     <Style.AllAxieStatsForm>
       <Style.FormSection>
         <Style.FormSectionHeaderWrap>
-          <h2>Axie Stats</h2>
+          <Style.Title>Axie Stats</Style.Title>
         </Style.FormSectionHeaderWrap>
         <Style.FormSectionBodyWrap>
           <Style.container>
@@ -18,10 +20,8 @@ const AllAxieStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
-                  min="21"
-                  step="1"
-                  max="61"
                   placeholder="21"
+                  style={iWidth}
                   id="minimum-hp"
                   defaultValue="21"
                 />
@@ -35,9 +35,7 @@ const AllAxieStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
-                  min="21"
-                  step="1"
-                  max="61"
+                  style={iWidth}
                   placeholder="21"
                   id="minimum-speed"
                   defaultValue="21"
@@ -51,9 +49,7 @@ const AllAxieStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
-                  min="21"
-                  step="1"
-                  max="61"
+                  style={iWidth}
                   placeholder="21"
                   id="minimum-skill"
                   defaultValue="21"
@@ -67,9 +63,7 @@ const AllAxieStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
-                  min="21"
-                  step="1"
-                  max="61"
+                  style={iWidth}
                   placeholder="21"
                   id="minimum-morale"
                   defaultValue="21"

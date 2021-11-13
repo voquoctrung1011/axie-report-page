@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const HomePage = styled.header`
-  padding: 10px;
-  max-width: 600px;
-  margin: 0 auto;
-`;
 export const Header = styled.header`
   margin-bottom: 10px;
   background: #242735;

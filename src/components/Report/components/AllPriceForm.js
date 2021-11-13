@@ -2,12 +2,14 @@ import React from "react";
 import { Input } from "antd";
 import * as Style from "../../../styles/AllPriceForm";
 
+const iWidth = { width: "180px", minWidth: "unset" };
+
 const AllPriceForm = () => {
   return (
     <Style.AllPriceForm>
       <Style.FormSection>
         <Style.FormSectionHeaderWrap>
-          <h2>Price</h2>
+          <Style.Title>Price</Style.Title>
         </Style.FormSectionHeaderWrap>
         <Style.FormSectionBodyWrap>
           <Style.container>
@@ -18,10 +20,9 @@ const AllPriceForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
-                  min="0"
-                  step="0.1"
                   id="minimum-sale-price"
                   placeholder="0"
+                  style={iWidth}
                   defaultValue="0"
                   className=""
                 />
@@ -35,9 +36,8 @@ const AllPriceForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
-                  min="0"
-                  step="0.1"
                   id="maximum-sale-price"
+                  style={iWidth}
                   placeholder="0.02"
                   defaultValue=""
                   className=""
