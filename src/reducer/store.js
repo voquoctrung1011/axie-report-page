@@ -14,7 +14,7 @@ const reducerSlice = createSlice({
       { id: 8, value: "Dawn" },
       { id: 9, value: "Metch" },
     ],
-    searchResult: [
+    pageResult: [
       { name: "Gero", attribute: "aquatic", eyes: "eyes-gero", country: "" },
       {
         name: "Sleepless",
@@ -23,7 +23,6 @@ const reducerSlice = createSlice({
         country: "",
       },
       { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
-
       { name: "Clear", attribute: "aquatic", eyes: "eyes-clear", country: "" },
       {
         name: "Telescope",
@@ -33,6 +32,7 @@ const reducerSlice = createSlice({
       },
     ],
     pageNumber: { start: 0, end: 5 },
+    searchResult: { text: "", type: "" },
     showAll: [],
   },
   reducers: {
@@ -42,8 +42,11 @@ const reducerSlice = createSlice({
     setShowAll: (state, action) => {
       state.showAll = action.payload;
     },
+    setPageResult: (state, action) => {
+      state.pageResult = action.payload;
+    },
     setSearchResult: (state, action) => {
-      state.showAll = action.payload;
+      state.searchResult = action.payload;
     },
     setPageNumber: (state, action) => {
       state.pageNumber = action.payload;

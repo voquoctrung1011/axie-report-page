@@ -8,7 +8,7 @@ import { setShowAll, setPageNumber } from "../../../reducer/store";
 
 const SearchResult = ({ type }) => {
   const dispatch = useDispatch();
-  const { showAll, searchResult, pageNumber } = useSelector(
+  const { showAll, pageResult, pageNumber, searchResult } = useSelector(
     (state) => state.store
   );
 
@@ -30,7 +30,7 @@ const SearchResult = ({ type }) => {
         return dispatch(
           setPageNumber({
             start: 0,
-            end: searchResult.length > 5 ? 5 : searchResult?.length,
+            end: pageResult.length > 5 ? 5 : pageResult?.length,
           })
         );
       // Previous to page
@@ -43,8 +43,8 @@ const SearchResult = ({ type }) => {
                 ? pageNumber.start !== 0
                   ? pageNumber.end - 5
                   : 5
-                : pageNumber.end === searchResult.length
-                ? pageNumber.end - (searchResult.length % 5)
+                : pageNumber.end === pageResult.length
+                ? pageNumber.end - (pageResult.length % 5)
                 : pageNumber.end,
           })
         );
@@ -53,15 +53,15 @@ const SearchResult = ({ type }) => {
         return dispatch(
           setPageNumber({
             start:
-              searchResult.length - pageNumber.end >= 5
+              pageResult.length - pageNumber.end >= 5
                 ? pageNumber.start + 5
-                : searchResult.length - pageNumber.end === 0
+                : pageResult.length - pageNumber.end === 0
                 ? pageNumber.start
-                : searchResult.length - (searchResult.length - pageNumber.end),
+                : pageResult.length - (pageResult.length - pageNumber.end),
             end:
-              searchResult.length - pageNumber.end >= 5
+              pageResult.length - pageNumber.end >= 5
                 ? pageNumber.end + 5
-                : searchResult.length,
+                : pageResult.length,
           })
         );
       //Return last page
@@ -69,10 +69,10 @@ const SearchResult = ({ type }) => {
         return dispatch(
           setPageNumber({
             start:
-              searchResult?.length % 5 === 0
-                ? searchResult?.length - 5
-                : searchResult.length - (searchResult?.length % 5),
-            end: searchResult?.length,
+              pageResult?.length % 5 === 0
+                ? pageResult?.length - 5
+                : pageResult.length - (pageResult?.length % 5),
+            end: pageResult?.length,
           })
         );
     }
@@ -80,12 +80,14 @@ const SearchResult = ({ type }) => {
 
   // return data show
   const ShowPages = (start, page) => {
-    if (searchResult) {
-      if (start && page) {
-        return searchResult.slice(start, page);
-      } else {
-        return searchResult.slice(0, 5);
-      }
+    if (pageResult) {
+      return pageResult
+        .slice(start ? start : 0, page ? page : 5)
+        .filter(
+          (o) =>
+            o.eyes.toLowerCase().includes(searchResult.text) ||
+            o.attribute.toLowerCase().includes(searchResult.text)
+        );
     }
   };
 
@@ -131,8 +133,8 @@ const SearchResult = ({ type }) => {
               <Style.resultsDescription className="results-description">
                 {/* Check length page & show information page */}
                 {`Showing ${pageNumber.start} - ${
-                  searchResult.length > 5 ? pageNumber.end : searchResult.length
-                } of ${searchResult.length}`}
+                  pageResult.length > 5 ? pageNumber.end : pageResult.length
+                } of ${pageResult.length}`}
               </Style.resultsDescription>
               <Style.paginationOptions>
                 <div

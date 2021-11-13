@@ -9,7 +9,7 @@ import { setShowAll } from "../../../reducer/store";
 
 const FormSection = () => {
   const dispatch = useDispatch();
-  const showAll = useSelector((state) => state.store.showAll);
+  const { showAll, searchResult } = useSelector((state) => state.store);
   const [gene_1, setGene_1] = useState(false);
   const [gene_2, setGene_2] = useState(false);
 
@@ -29,6 +29,12 @@ const FormSection = () => {
       dispatch(setShowAll([...showAll, type]));
     }
   };
+
+  useEffect(() => {
+    if (searchResult && searchResult.type !== "") {
+      onToogleShowAlls(searchResult.type);
+    }
+  }, [searchResult?.type]);
 
   return (
     <Style.FormSection>
@@ -52,7 +58,7 @@ const FormSection = () => {
           <Style.GeneSelectInput>
             <div className="search-input-container">
               <Style.GeneSelectSearchInput>
-                <SearchTrait />
+                <SearchTrait type="all" />
               </Style.GeneSelectSearchInput>
             </div>
             <div className="search-results-container">
@@ -98,7 +104,7 @@ const FormSection = () => {
                 <Style.GeneSelectInput>
                   <div className="search-input-container">
                     <Style.GeneSelectSearchInput>
-                      <SearchTrait />
+                      <SearchTrait type="allR1" />
                     </Style.GeneSelectSearchInput>
                   </div>
                   <div className="search-results-container">
@@ -151,7 +157,7 @@ const FormSection = () => {
                 <Style.GeneSelectInput className="GeneSelectInput">
                   <div className="search-input-container">
                     <Style.GeneSelectSearchInput className="GeneSelectSearchInput">
-                      <SearchTrait />
+                      <SearchTrait type="allR2" />
                     </Style.GeneSelectSearchInput>
                   </div>
                   <div className="search-results-container">
@@ -176,13 +182,13 @@ const FormSection = () => {
                   </div>
                 </Style.GeneSelectInput>
               </div>
-              <button
+              <Button
                 type="button"
                 className="Button Button-anchor btn-remove"
                 onClick={() => setGene_2(false)}
               >
                 Remove R2 Gene Filter
-              </button>
+              </Button>
             </div>
           )}
         </Style.AllGenesInput>
