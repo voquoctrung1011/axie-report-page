@@ -7,24 +7,7 @@ import { setShowAll } from "../../../reducer/store";
 
 const SearchResult = ({ type }) => {
   const dispatch = useDispatch();
-  const showAll = useSelector((state) => state.store.showAll);
-  const [data, setData] = useState([
-    { name: "Gero", attribute: "aquatic", eyes: "eyes-gero", country: "" },
-    {
-      name: "Sleepless",
-      attribute: "aquatic",
-      eyes: "eyes-sleepless",
-      country: "",
-    },
-    { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
-    { name: "Clear", attribute: "aquatic", eyes: "eyes-clear", country: "" },
-    {
-      name: "Telescope",
-      attribute: "aquatic",
-      eyes: "eyes-telescope",
-      country: "",
-    },
-  ]);
+  const { showAll, searchResult } = useSelector((state) => state.store);
 
   const onToogleCloseShow = () => {
     const newShowAll = [...showAll];
@@ -39,7 +22,7 @@ const SearchResult = ({ type }) => {
     <div className="search-results-container">
       <div className="search-results-wrap">
         <Style.GeneSearchResults>
-          {data.map((o, index) => (
+          {searchResult.map((o, index) => (
             <Style.GeneSearchResult key={index}>
               <Style.container>
                 <h2>

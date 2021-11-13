@@ -31,11 +31,11 @@ const FormSection = () => {
   };
 
   return (
-    <div className="FormSection">
-      <div className="FormSection-header-wrap">
+    <Style.FormSection>
+      <Style.FormSectionHeaderWrap>
         <h2>Genes</h2>
-      </div>
-      <div className="FormSection-body-wrap">
+      </Style.FormSectionHeaderWrap>
+      <Style.FormSectionBodyWrap>
         <Style.AllGenesInput>
           <h2>Dominant genes</h2>
           <Style.P>
@@ -186,8 +186,8 @@ const FormSection = () => {
             </div>
           )}
         </Style.AllGenesInput>
-      </div>
-    </div>
+      </Style.FormSectionBodyWrap>
+    </Style.FormSection>
   );
 };
 

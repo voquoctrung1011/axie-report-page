@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
 export const FormSection = styled.div``;
-export const FormSectionHeaderWrap = styled.div`
-  border-bottom: 1px solid #3a3f50;
-  margin-bottom: 6px;
-`;
+export const FormSectionHeaderWrap = styled.div``;
 export const FormSectionBodyWrap = styled.div``;
 export const AllGenesInput = styled.div`
   margin-bottom: 30px;

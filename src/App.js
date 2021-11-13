@@ -1,7 +1,7 @@
 import Main from "./pages/report/index";
 import "antd/dist/antd.css";
-import { Provider } from "react-redux";
 import "./App.css";
+import { Provider } from "react-redux";
 import store from "./reducer";
 
 function App() {

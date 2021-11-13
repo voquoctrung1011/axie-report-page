@@ -14,6 +14,23 @@ const reducerSlice = createSlice({
       { id: 8, value: "Dawn" },
       { id: 9, value: "Metch" },
     ],
+    searchResult: [
+      { name: "Gero", attribute: "aquatic", eyes: "eyes-gero", country: "" },
+      {
+        name: "Sleepless",
+        attribute: "aquatic",
+        eyes: "eyes-sleepless",
+        country: "",
+      },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Clear", attribute: "aquatic", eyes: "eyes-clear", country: "" },
+      {
+        name: "Telescope",
+        attribute: "aquatic",
+        eyes: "eyes-telescope",
+        country: "",
+      },
+    ],
     showAll: [],
   },
   reducers: {
@@ -23,10 +40,14 @@ const reducerSlice = createSlice({
     setShowAll: (state, action) => {
       state.showAll = action.payload;
     },
+    setSearchResult: (state, action) => {
+      state.showAll = action.payload;
+    },
   },
 });
 
 export default reducerSlice.reducer;
 
 //action
-export const { setListCheckbox, setShowAll } = reducerSlice.actions;
+export const { setListCheckbox, setShowAll, setSearchResult } =
+  reducerSlice.actions;
