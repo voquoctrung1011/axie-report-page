@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 import { Input, Checkbox } from "antd";
 import * as Style from "../../../styles/BreedAndClassForm";
+import { useSelector } from "react-redux";
 
 const BreedAndClassForm = () => {
-  const [listCheckbox, setList] = useState([
-    { id: 1, value: "Beast" },
-    { id: 2, value: "Bug" },
-    { id: 3, value: "Bird" },
-    { id: 4, value: "Plant" },
-    { id: 5, value: "Aquatic" },
-    { id: 6, value: "Reptile" },
-    { id: 7, value: "Dusk" },
-    { id: 8, value: "Dawn" },
-    { id: 9, value: "Metch" },
-  ]);
+  const listCheckbox = useSelector((state) => state.store.listCheckbox);
 
   function onChange(e) {
     console.log(`checked = ${e.target.checked}`);

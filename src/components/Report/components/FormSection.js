@@ -3,9 +3,13 @@ import React, { useEffect, useState } from "react";
 import SearchTrait from "./SearchTrait";
 import SearchResult from "./SearchResults";
 import { Button } from "antd";
+import * as Style from "../../../styles/FormSection";
+import { useSelector, useDispatch } from "react-redux";
+import { setShowAll } from "../../../reducer/store";
 
 const FormSection = () => {
-  const [showAll, setShowAll] = useState([]);
+  const dispatch = useDispatch();
+  const showAll = useSelector((state) => state.store.showAll);
   const [gene_1, setGene_1] = useState(false);
   const [gene_2, setGene_2] = useState(false);
 
@@ -18,11 +22,11 @@ const FormSection = () => {
     }
   };
 
-  const onToogleShowAll = (type) => {
+  const onToogleShowAlls = (type) => {
     const newShowAll = [...showAll];
     const aIndex = newShowAll.indexOf(type);
     if (aIndex === -1) {
-      setShowAll([...showAll, type]);
+      dispatch(setShowAll([...showAll, type]));
     }
   };
 
@@ -32,9 +36,9 @@ const FormSection = () => {
         <h2>Genes</h2>
       </div>
       <div className="FormSection-body-wrap">
-        <div className="AllGenesInput">
+        <Style.AllGenesInput>
           <h2>Dominant genes</h2>
-          <p>
+          <Style.P>
             Search and select dominant genes to require (
             <svg viewBox="0 0 10 10" width="10" height="10">
               <rect x="0" y="0" width="10" height="10" fill="green"></rect>
@@ -44,41 +48,37 @@ const FormSection = () => {
               <rect x="0" y="0" width="10" height="10" fill="red"></rect>
             </svg>
             ). Click to toggle between include / exclude.
-          </p>
-          <div className="GeneSelectInput">
+          </Style.P>
+          <Style.GeneSelectInput>
             <div className="search-input-container">
-              <div className="GeneSelectSearchInput">
+              <Style.GeneSelectSearchInput>
                 <SearchTrait />
-              </div>
+              </Style.GeneSelectSearchInput>
             </div>
             <div className="search-results-container">
               <div className="search-results-wrap">
-                <div className="GeneSearchResults"></div>
+                <Style.GeneSearchResults></Style.GeneSearchResults>
                 <div className="GeneSearchResultsOptions">
                   <div className="non-pagination-actions-wrap">
                     {!showAll.includes("all") ? (
                       <Button
                         type="button"
                         className="Button Button-anchor"
-                        onClick={() => onToogleShowAll("all")}
+                        onClick={() => onToogleShowAlls("all")}
                       >
                         Show all
                       </Button>
                     ) : (
-                      <SearchResult
-                        showAll={showAll}
-                        setShowAll={setShowAll}
-                        type="all"
-                      />
+                      <SearchResult showAll={showAll} type="all" />
                     )}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <p className="other-filters-desc">
+          </Style.GeneSelectInput>
+          <Style.pFilter>
             You can optionally filter on a Recessive1 and Recessive2 genes:
-          </p>
+          </Style.pFilter>
           {/* Button Gene R1 */}
           {!gene_1 ? (
             <div className="r1-gene-filter-wrap">
@@ -95,37 +95,33 @@ const FormSection = () => {
             <div className="r1-gene-filter-wrap r-gene-filter-wrap-true">
               <div className="r1-gene-filter-wrap-wrap">
                 <h2>Recessive1 gene</h2>
-                <div className="GeneSelectInput">
+                <Style.GeneSelectInput>
                   <div className="search-input-container">
-                    <div className="GeneSelectSearchInput">
+                    <Style.GeneSelectSearchInput>
                       <SearchTrait />
-                    </div>
+                    </Style.GeneSelectSearchInput>
                   </div>
                   <div className="search-results-container">
                     <div className="search-results-wrap">
-                      <div className="GeneSearchResults"></div>
+                      <Style.GeneSearchResults></Style.GeneSearchResults>
                       <div className="GeneSearchResultsOptions">
                         <div className="non-pagination-actions-wrap">
                           {!showAll.includes("allR1") ? (
                             <Button
                               type="button"
                               className="Button Button-anchor"
-                              onClick={() => onToogleShowAll("allR1")}
+                              onClick={() => onToogleShowAlls("allR1")}
                             >
                               Show all
                             </Button>
                           ) : (
-                            <SearchResult
-                              showAll={showAll}
-                              setShowAll={setShowAll}
-                              type="allR1"
-                            />
+                            <SearchResult showAll={showAll} type="allR1" />
                           )}
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Style.GeneSelectInput>
               </div>
               <Button
                 type="button"
@@ -152,37 +148,33 @@ const FormSection = () => {
             <div className="r2-gene-filter-wrap r-gene-filter-wrap-true">
               <div className="r2-gene-filter-wrap-wrap">
                 <h2>Recessive2 gene</h2>
-                <div className="GeneSelectInput">
+                <Style.GeneSelectInput className="GeneSelectInput">
                   <div className="search-input-container">
-                    <div className="GeneSelectSearchInput">
+                    <Style.GeneSelectSearchInput className="GeneSelectSearchInput">
                       <SearchTrait />
-                    </div>
+                    </Style.GeneSelectSearchInput>
                   </div>
                   <div className="search-results-container">
                     <div className="search-results-wrap">
-                      <div className="GeneSearchResults"></div>
+                      <Style.GeneSearchResults className="GeneSearchResults"></Style.GeneSearchResults>
                       <div className="GeneSearchResultsOptions">
                         <div className="non-pagination-actions-wrap">
                           {!showAll.includes("allR2") ? (
                             <Button
                               type="button"
                               className="Button Button-anchor"
-                              onClick={() => onToogleShowAll("allR2")}
+                              onClick={() => onToogleShowAlls("allR2")}
                             >
                               Show all
                             </Button>
                           ) : (
-                            <SearchResult
-                              showAll={showAll}
-                              setShowAll={setShowAll}
-                              type="allR2"
-                            />
+                            <SearchResult showAll={showAll} type="allR2" />
                           )}
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Style.GeneSelectInput>
               </div>
               <button
                 type="button"
@@ -193,7 +185,7 @@ const FormSection = () => {
               </button>
             </div>
           )}
-        </div>
+        </Style.AllGenesInput>
       </div>
     </div>
   );

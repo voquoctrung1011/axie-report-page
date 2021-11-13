@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import computerReducer from "./store";
+import reportReducer from "./store";
 
 const store = configureStore({
   reducer: {
-    store: computerReducer,
+    store: reportReducer,
   },
 });
 

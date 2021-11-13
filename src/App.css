@@ -1,14 +1,15 @@
-.App {
-  text-align: center;
-}
 .app {
   background-color: #242735;
+}
+@font-face {
+  font-family: Roboto;
+  src: url("/src/assets/fonts/Roboto-Regular.ttf");
 }
 * {
   padding: 0;
   margin: 0;
   border: none;
-  /* font-family: "Nunito"; */
+  font-family: "Roboto";
 }
 
 .App-logo {
@@ -70,6 +71,30 @@ h2 {
   border: none;
   cursor: pointer;
 }
+.ant-btn {
+  background: none;
+  color: #036cfc;
+  padding: 0;
+  font-weight: 700;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.ant-btn:hover {
+  background: none;
+}
+.ant-input {
+  padding: 10px 15px;
+  background: #282b39;
+  border: 1px solid #3a3f50;
+  border-radius: 5px;
+  min-width: 200px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+}
 .non-pagination-actions-wrap,
 .r1-gene-filter-wrap,
 .r2-gene-filter-wrap,
@@ -107,6 +132,7 @@ h2 {
   color: #fff;
   margin-bottom: 6px;
 }
+
 .input-wrap input {
   padding: 10px 15px;
   background: #282b39;
@@ -123,6 +149,10 @@ h2 {
   font-weight: 400;
   font-size: 16px;
   color: #91939a;
+}
+.input-wrap svg {
+  height: 20px;
+  margin-right: 10px;
 }
 .FormSection .FormSection-header-wrap {
   border-bottom: 1px solid #3a3f50;
@@ -157,4 +187,7 @@ h2 {
   font-size: 16px;
   color: #91939a;
   line-height: 16px;
+}
+.btn-remove {
+  color: #7334d5;
 }
