@@ -1,16 +1,17 @@
 import React from "react";
 import { Input } from "antd";
+import * as Style from "../../../styles/AllPriceForm";
 
 const AllPriceForm = () => {
   return (
-    <div className="AllPriceForm">
-      <div className="FormSection">
-        <div className="FormSection-header-wrap">
+    <Style.AllPriceForm>
+      <Style.FormSection>
+        <Style.FormSectionHeaderWrap>
           <h2>Price</h2>
-        </div>
-        <div className="FormSection-body-wrap">
-          <div className="container">
-            <div className="MinimumSalePrice">
+        </Style.FormSectionHeaderWrap>
+        <Style.FormSectionBodyWrap>
+          <Style.container>
+            <Style.MinimumSalePrice>
               <h2>
                 <label htmlFor="minimum-sale-price">Minimum sale price</label>
               </h2>
@@ -26,8 +27,8 @@ const AllPriceForm = () => {
                 />
                 <span>ETH</span>
               </div>
-            </div>
-            <div className="MaximumSalePrice">
+            </Style.MinimumSalePrice>
+            <Style.MaximumSalePrice>
               <h2>
                 <label htmlFor="maximum-sale-price">Maximum sale price</label>
               </h2>
@@ -43,11 +44,11 @@ const AllPriceForm = () => {
                 />
                 <span>ETH</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Style.MaximumSalePrice>
+          </Style.container>
+        </Style.FormSectionBodyWrap>
+      </Style.FormSection>
+    </Style.AllPriceForm>
   );
 };
 

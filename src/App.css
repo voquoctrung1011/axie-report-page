@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 }
-.app{
+.app {
   background-color: #242735;
 }
 * {
@@ -44,4 +44,117 @@
   to {
     transform: rotate(360deg);
   }
+}
+.HomePage {
+  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+h2 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+  color: #fff !important;
+  margin-bottom: 6px;
+}
+.non-pagination-actions-wrap,
+.r1-gene-filter-wrap,
+.r2-gene-filter-wrap,
+.cta-wrap Button {
+  background: none;
+  color: #036cfc;
+  padding: 0;
+  font-weight: 700;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.non-pagination-actions-wrap,
+.r1-gene-filter-wrap,
+.r2-gene-filter-wrap,
+.cta-wrap Button:hover {
+  background: none;
+}
+.ant-pagination-item,
+.ant-pagination-options {
+  display: none;
+}
+.ant-pagination-total-text {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #91939a;
+  margin-right: 20px;
+  vertical-align: text-top;
+  letter-spacing: 1px;
+}
+.ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination-next .ant-pagination-item-link {
+  background-color: #fff0;
+  border-color: #fff0;
+  color: #036cfc;
+  font-size: 13px;
+}
+.FormSection .FormSection-header-wrap {
+  border-bottom: 1px solid #3a3f50;
+  margin-bottom: 6px;
+}
+.FormSection .FormSection-header-wrap h2 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.input-wrap input {
+  padding: 10px 15px;
+  background: #282b39;
+  border: 1px solid #3a3f50;
+  border-radius: 5px;
+  min-width: 200px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+}
+.input-wrap span {
+  margin-left: 15px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #91939a;
+}
+.FormSection .FormSection-header-wrap {
+  border-bottom: 1px solid #3a3f50;
+  margin-bottom: 6px;
+}
+.FormSection .FormSection-header-wrap h2 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.input-wrap ul li label {
+  display: flex;
+  padding: 8px 15px;
+  background: #282b39;
+  border: 1px solid #3a3f50;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.input-wrap ul li label input {
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  min-width: auto;
+  margin-right: 15px;
+}
+.input-wrap ul li label span {
+  margin-left: 0;
+  font-weight: 400;
+  font-size: 16px;
+  color: #91939a;
+  line-height: 16px;
 }

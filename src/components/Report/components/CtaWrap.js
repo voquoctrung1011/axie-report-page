@@ -1,16 +1,14 @@
 import React from "react";
 import { Button } from "antd";
+import * as Style from "../../../styles/CtaWrap";
 
 const CtaWrap = () => {
   return (
-    <div className="cta-wrap">
-      <Button type="button" className="Button Button-anchor">
-        ← Back
-      </Button>
-      <Button type="button" className="Button">
+    <Style.ctaWrap>
+      <Style.Button type="Style.ctaWrap">
         <span>Create filter</span>
-      </Button>
-    </div>
+      </Style.Button>
+    </Style.ctaWrap>
   );
 };
 

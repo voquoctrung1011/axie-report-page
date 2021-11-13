@@ -1,20 +1,21 @@
 import React from "react";
 import { Input } from "antd";
+import * as Style from "../../../styles/AllAxieStatsForm";
 
 const AllAxieStatsForm = () => {
   return (
-    <div className="AllAxieStatsForm">
-      <div className="FormSection">
-        <div className="FormSection-header-wrap">
+    <Style.AllAxieStatsForm>
+      <Style.FormSection>
+        <Style.FormSectionHeaderWrap>
           <h2>Axie Stats</h2>
-        </div>
-        <div className="FormSection-body-wrap">
-          <div className="container">
-            <div className="MinimumHp">
+        </Style.FormSectionHeaderWrap>
+        <Style.FormSectionBodyWrap>
+          <Style.container>
+            <Style.MinimumHp>
               <h2>
                 <label htmlFor="minimum-hp">Minimum HP</label>
               </h2>
-              <div className="input-wrap">
+              <Style.inputWrap>
                 <Input
                   type="number"
                   min="21"
@@ -25,13 +26,13 @@ const AllAxieStatsForm = () => {
                   defaultValue="21"
                 />
                 <span>HP</span>
-              </div>
-            </div>
-            <div className="MinimumSpeed">
+              </Style.inputWrap>
+            </Style.MinimumHp>
+            <Style.MinimumSpeed>
               <h2>
                 <label htmlFor="minimum-speed">Minimum Speed</label>
               </h2>
-              <div className="input-wrap">
+              <Style.inputWrap>
                 <Input
                   type="number"
                   min="21"
@@ -41,13 +42,13 @@ const AllAxieStatsForm = () => {
                   id="minimum-speed"
                   defaultValue="21"
                 />
-              </div>
-            </div>
-            <div className="MinimumSkill">
+              </Style.inputWrap>
+            </Style.MinimumSpeed>
+            <Style.MinimumSkill>
               <h2>
                 <label htmlFor="minimum-skill">Minimum Skill</label>
               </h2>
-              <div className="input-wrap">
+              <Style.inputWrap>
                 <Input
                   type="number"
                   min="21"
@@ -57,13 +58,13 @@ const AllAxieStatsForm = () => {
                   id="minimum-skill"
                   defaultValue="21"
                 />
-              </div>
-            </div>
-            <div className="MinimumMorale">
+              </Style.inputWrap>
+            </Style.MinimumSkill>
+            <Style.MinimumMorale>
               <h2>
                 <label htmlFor="minimum-morale">Minimum Morale</label>
               </h2>
-              <div className="input-wrap">
+              <Style.inputWrap>
                 <Input
                   type="number"
                   min="21"
@@ -73,12 +74,12 @@ const AllAxieStatsForm = () => {
                   id="minimum-morale"
                   defaultValue="21"
                 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+              </Style.inputWrap>
+            </Style.MinimumMorale>
+          </Style.container>
+        </Style.FormSectionBodyWrap>
+      </Style.FormSection>
+    </Style.AllAxieStatsForm>
   );
 };
 

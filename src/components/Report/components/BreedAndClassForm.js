@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Input, Checkbox } from "antd";
+import * as Style from "../../../styles/BreedAndClassForm";
 
 const BreedAndClassForm = () => {
   const [listCheckbox, setList] = useState([
@@ -19,13 +20,13 @@ const BreedAndClassForm = () => {
   }
 
   return (
-    <div className="BreedAndClassForm">
-      <div className="FormSection">
-        <div className="FormSection-header-wrap">
+    <Style.BreedAndClassForm>
+      <Style.FormSection>
+        <Style.FormSectionHeaderWrap>
           <h2>Breed and Class</h2>
-        </div>
-        <div className="FormSection-body-wrap">
-          <div className="MaximumBreedCount">
+        </Style.FormSectionHeaderWrap>
+        <Style.FormSectionBodyWrap>
+          <Style.MaximumBreedCount>
             <h2>
               <label htmlFor="maximum-breed-count">Maximum breed count</label>
             </h2>
@@ -41,26 +42,26 @@ const BreedAndClassForm = () => {
                 className=""
               />
             </div>
-          </div>
-          <div className="AxieClassesForm">
+          </Style.MaximumBreedCount>
+          <Style.AxieClassesForm>
             <h2>
               <label htmlFor="axie-class-select">Axie classes</label>
             </h2>
             <div className="input-wrap">
-              <ul>
+              <Style.Ul>
                 {listCheckbox.map((item, index) => (
-                  <li key={index}>
+                  <Style.Li key={index}>
                     <Checkbox defaultChecked="true" onChange={onChange}>
                       {item.value}
                     </Checkbox>
-                  </li>
+                  </Style.Li>
                 ))}
-              </ul>
+              </Style.Ul>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Style.AxieClassesForm>
+        </Style.FormSectionBodyWrap>
+      </Style.FormSection>
+    </Style.BreedAndClassForm>
   );
 };
 

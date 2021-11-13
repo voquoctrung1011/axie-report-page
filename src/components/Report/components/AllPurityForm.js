@@ -1,15 +1,16 @@
 import React from "react";
+import * as Style from "../../../styles/AllPurityForm";
 
 const AllPurityForm = () => {
   return (
-    <div className="AllPurityForm">
-      <div className="FormSection">
-        <div className="FormSection-header-wrap">
+    <Style.AllPurityForm>
+      <Style.FormSection>
+        <Style.FormSectionHeaderWrap>
           <h2>Purity</h2>
-        </div>
-        <div className="FormSection-body-wrap">
-          <div className="container">
-            <div className="MinPurenessForm">
+        </Style.FormSectionHeaderWrap>
+        <Style.FormSectionBodyWrap>
+          <Style.container>
+            <Style.MinPurenessForm>
               <h2>
                 <label htmlFor="minimum-pureness">Minimum pureness</label>
               </h2>
@@ -24,8 +25,8 @@ const AllPurityForm = () => {
                   defaultValue="0"
                 />
               </div>
-            </div>
-            <div className="MinPurityForm">
+            </Style.MinPurenessForm>
+            <Style.MinPurityForm>
               <h2>
                 <label htmlFor="minimum-purity">Minimum purity</label>
               </h2>
@@ -41,11 +42,11 @@ const AllPurityForm = () => {
                 />
                 <span>%</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Style.MinPurityForm>
+          </Style.container>
+        </Style.FormSectionBodyWrap>
+      </Style.FormSection>
+    </Style.AllPurityForm>
   );
 };
 
