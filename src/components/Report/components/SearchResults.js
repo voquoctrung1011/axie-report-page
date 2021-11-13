@@ -1,14 +1,18 @@
+/* eslint-disable default-case */
 /* eslint-disable react/jsx-pascal-case */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Pagination } from "antd";
 import * as Style from "../../../styles/FormSection";
 import { useSelector, useDispatch } from "react-redux";
-import { setShowAll } from "../../../reducer/store";
+import { setShowAll, setPageNumber } from "../../../reducer/store";
 
 const SearchResult = ({ type }) => {
   const dispatch = useDispatch();
-  const { showAll, searchResult } = useSelector((state) => state.store);
+  const { showAll, searchResult, pageNumber } = useSelector(
+    (state) => state.store
+  );
 
+  // Close show all search data
   const onToogleCloseShow = () => {
     const newShowAll = [...showAll];
     const aIndex = newShowAll?.indexOf(type);
@@ -18,11 +22,78 @@ const SearchResult = ({ type }) => {
     dispatch(setShowAll(newShowAll));
   };
 
+  // Pagination page change data
+  const onToogleChangePage = (type) => {
+    switch (type) {
+      // Return first page
+      case "first":
+        return dispatch(
+          setPageNumber({
+            start: 0,
+            end: searchResult.length > 5 ? 5 : searchResult?.length,
+          })
+        );
+      // Previous to page
+      case "prev":
+        return dispatch(
+          setPageNumber({
+            start: pageNumber.start <= 5 ? 0 : pageNumber.start - 5,
+            end:
+              pageNumber.end - pageNumber.start >= 5
+                ? pageNumber.start !== 0
+                  ? pageNumber.end - 5
+                  : 5
+                : pageNumber.end === searchResult.length
+                ? pageNumber.end - (searchResult.length % 5)
+                : pageNumber.end,
+          })
+        );
+      // Next to page
+      case "next":
+        return dispatch(
+          setPageNumber({
+            start:
+              searchResult.length - pageNumber.end >= 5
+                ? pageNumber.start + 5
+                : searchResult.length - pageNumber.end === 0
+                ? pageNumber.start
+                : searchResult.length - (searchResult.length - pageNumber.end),
+            end:
+              searchResult.length - pageNumber.end >= 5
+                ? pageNumber.end + 5
+                : searchResult.length,
+          })
+        );
+      //Return last page
+      case "last":
+        return dispatch(
+          setPageNumber({
+            start:
+              searchResult?.length % 5 === 0
+                ? searchResult?.length - 5
+                : searchResult.length - (searchResult?.length % 5),
+            end: searchResult?.length,
+          })
+        );
+    }
+  };
+
+  // return data show
+  const ShowPages = (start, page) => {
+    if (searchResult) {
+      if (start && page) {
+        return searchResult.slice(start, page);
+      } else {
+        return searchResult.slice(0, 5);
+      }
+    }
+  };
+
   return (
     <div className="search-results-container">
       <div className="search-results-wrap">
         <Style.GeneSearchResults>
-          {searchResult.map((o, index) => (
+          {ShowPages(pageNumber.start, pageNumber.end).map((o, index) => (
             <Style.GeneSearchResult key={index}>
               <Style.container>
                 <h2>
@@ -48,36 +119,59 @@ const SearchResult = ({ type }) => {
             </div>
             {/* Pagination of antd */}
             {/* <Pagination
-              total={85}
+              total={searchResult?.length}
               showTotal={(total, range) =>
                 `Showing${range[0]}-${range[1]} of ${total}`
               }
-              defaultPageSize={20}
+              defaultPageSize={5}
               defaultCurrent={1}
             /> */}
             {/* Pagination custom */}
             <Style.pagination>
               <Style.resultsDescription className="results-description">
-                Showing 1 - 5 of 255
+                {/* Check length page & show information page */}
+                {`Showing ${pageNumber.start} - ${
+                  searchResult.length > 5 ? pageNumber.end : searchResult.length
+                } of ${searchResult.length}`}
               </Style.resultsDescription>
               <Style.paginationOptions>
-                <div className="first-page">
+                <div
+                  className="first-page"
+                  onClick={() => onToogleChangePage("first")}
+                >
                   <Style.svgPagination viewBox="0 0 24 24" fill="none">
                     <path d="M11 17L6 12L11 7" stroke="#3082F2"></path>
                     <path d="M18 17L13 12L18 7" stroke="#3082F2"></path>
                   </Style.svgPagination>
                 </div>
-                <div className="back-page">
+                <div
+                  className="back-page"
+                  onClick={() => onToogleChangePage("prev")}
+                >
                   <Style.svgPagination viewBox="0 0 24 24" fill="none">
                     <path d="M15 18L9 12L15 6" stroke="#3082F2"></path>
                   </Style.svgPagination>
                 </div>
-                <div className="next-page">
-                  <Style.svgPagination viewBox="0 0 24 24" fill="none">
-                    <path d="M9 18L15 12L9 6" stroke="#3082F2"></path>
+                <div
+                  className="next-page"
+                  onClick={() => onToogleChangePage("next")}
+                >
+                  <Style.svgPagination
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-disabled
+                  >
+                    <path
+                      d="M9 18L15 12L9 6"
+                      stroke="#3082F2"
+                      aria-disabled
+                    ></path>
                   </Style.svgPagination>
                 </div>
-                <div className="last-page">
+                <div
+                  className="last-page"
+                  onClick={() => onToogleChangePage("last")}
+                >
                   <Style.svgPagination viewBox="0 0 24 24" fill="none">
                     <path d="M13 17L18 12L13 7" stroke="#3082F2"></path>
                     <path d="M6 17L11 12L6 7" stroke="#3082F2"></path>

@@ -23,6 +23,53 @@ const reducerSlice = createSlice({
         country: "",
       },
       { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
+      { name: "Yen", attribute: "aquatic", eyes: "eyes-yen", country: "japan" },
       { name: "Clear", attribute: "aquatic", eyes: "eyes-clear", country: "" },
       {
         name: "Telescope",
@@ -31,6 +78,7 @@ const reducerSlice = createSlice({
         country: "",
       },
     ],
+    pageNumber: { start: 0, end: 5 },
     showAll: [],
   },
   reducers: {
@@ -43,11 +91,16 @@ const reducerSlice = createSlice({
     setSearchResult: (state, action) => {
       state.showAll = action.payload;
     },
+    setPageNumber: (state, action) => {
+      state.pageNumber = action.payload;
+    },
   },
 });
 
 export default reducerSlice.reducer;
 
 //action
-export const { setListCheckbox, setShowAll, setSearchResult } =
+export const { setListCheckbox, setShowAll, setSearchResult, setPageNumber } =
   reducerSlice.actions;
+
+export const paginationResult = async (dispatch) => {};
