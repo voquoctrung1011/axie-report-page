@@ -75,8 +75,12 @@ const reducerSlice = createSlice({
         country: "",
       },
     ],
-    pageNumber: { start: 0, end: 5 },
-    searchResult: { text: "", type: [] },
+    pageNumber: {
+      all: { start: 0, end: 5 },
+      allR1: { start: 0, end: 5 },
+      allR2: { start: 0, end: 5 },
+    },
+    searchResult: {},
     showAll: [],
   },
   reducers: {

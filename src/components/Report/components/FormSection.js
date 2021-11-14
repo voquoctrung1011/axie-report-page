@@ -31,10 +31,12 @@ const FormSection = () => {
   };
 
   useEffect(() => {
-    if (searchResult && searchResult.type !== "") {
-      onToogleShowAlls(searchResult.type);
-    }
-  }, [searchResult?.type]);
+    Object.keys(searchResult).forEach((search) => {
+      if (search) {
+        onToogleShowAlls(search);
+      }
+    });
+  }, [searchResult]);
 
   return (
     <Style.FormSection>
@@ -75,7 +77,7 @@ const FormSection = () => {
                         Show all
                       </Button>
                     ) : (
-                      <SearchResult showAll={showAll} type="all" />
+                      <SearchResult type="all" />
                     )}
                   </div>
                 </div>
@@ -121,7 +123,7 @@ const FormSection = () => {
                               Show all
                             </Button>
                           ) : (
-                            <SearchResult showAll={showAll} type="allR1" />
+                            <SearchResult type="allR1" />
                           )}
                         </div>
                       </div>
@@ -174,7 +176,7 @@ const FormSection = () => {
                               Show all
                             </Button>
                           ) : (
-                            <SearchResult showAll={showAll} type="allR2" />
+                            <SearchResult type="allR2" />
                           )}
                         </div>
                       </div>

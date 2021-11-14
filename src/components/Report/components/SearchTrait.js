@@ -1,16 +1,19 @@
 import React from "react";
 import * as Style from "../../../styles/FormSection";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setSearchResult } from "../../../reducer/store";
 
 const Search = ({ type }) => {
   const dispatch = useDispatch();
+  const { searchResult } = useSelector((state) => state.store);
   // search item table
   const onToggleSearch = (e) => {
+    const name = e.target.name;
+    const value = e.target.value.toLowerCase();
     dispatch(
       setSearchResult({
-        text: e.target.value.toLowerCase(),
-        type: type,
+        ...searchResult,
+        [name]: value,
       })
     );
   };

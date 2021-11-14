@@ -16,6 +16,13 @@ const SearchResult = ({ type }) => {
     (state) => state.store
   );
 
+  // get information pagination
+  const start =
+    Object.values(pageNumber)[Object.keys(pageNumber).indexOf(type)].start;
+  const end =
+    Object.values(pageNumber)[Object.keys(pageNumber).indexOf(type)].end;
+  const total = pageResult.length;
+
   // Close show all search data
   const onToogleCloseShow = () => {
     const newShowAll = [...showAll];
@@ -27,72 +34,98 @@ const SearchResult = ({ type }) => {
   };
 
   // Pagination page change data
-  const onToogleChangePage = (type) => {
-    dispatch(setSearchResult({ text: "", type: type }));
-    switch (type) {
+  const optionPagination = (option, type) => {
+    switch (option) {
       // Return first page
       case "first":
         return dispatch(
           setPageNumber({
-            start: 0,
-            end: pageResult.length > 5 ? 5 : pageResult?.length,
+            ...pageNumber,
+            [type]: {
+              start: 0,
+              end: total > 5 ? 5 : total,
+            },
           })
         );
       // Previous to page
       case "prev":
         return dispatch(
           setPageNumber({
-            start: pageNumber.start <= 5 ? 0 : pageNumber.start - 5,
-            end:
-              pageNumber.end - pageNumber.start >= 5
-                ? pageNumber.start !== 0
-                  ? pageNumber.end - 5
-                  : 5
-                : pageNumber.end === pageResult.length
-                ? pageNumber.end - (pageResult.length % 5)
-                : pageNumber.end,
+            ...pageNumber,
+            [type]: {
+              start: start <= 5 ? 0 : start - 5,
+              end:
+                end - start >= 5
+                  ? start !== 0
+                    ? end - 5
+                    : 5
+                  : end === total
+                  ? end - (total % 5)
+                  : end,
+            },
           })
         );
       // Next to page
       case "next":
         return dispatch(
           setPageNumber({
-            start:
-              pageResult.length - pageNumber.end >= 5
-                ? pageNumber.start + 5
-                : pageResult.length - pageNumber.end === 0
-                ? pageNumber.start
-                : pageResult.length - (pageResult.length - pageNumber.end),
-            end:
-              pageResult.length - pageNumber.end >= 5
-                ? pageNumber.end + 5
-                : pageResult.length,
+            ...pageNumber,
+            [type]: {
+              start:
+                total - end >= 5
+                  ? start + 5
+                  : total - end === 0
+                  ? start
+                  : total - (total - end),
+              end: total - end >= 5 ? end + 5 : total,
+            },
           })
         );
       //Return last page
       case "last":
         return dispatch(
           setPageNumber({
-            start:
-              pageResult?.length % 5 === 0
-                ? pageResult?.length - 5
-                : pageResult.length - (pageResult?.length % 5),
-            end: pageResult?.length,
+            ...pageNumber,
+            [type]: {
+              start: total % 5 === 0 ? total - 5 : total - (total % 5),
+              end: total,
+            },
           })
         );
     }
   };
+  // Pagination page change type
+  const onToogleChangePage = (option) => {
+    switch (type) {
+      case "all":
+        optionPagination(option, "all");
+        break;
+      case "allR1":
+        optionPagination(option, "allR1");
+        break;
+      case "allR2":
+        optionPagination(option, "allR2");
+        break;
+    }
+  };
 
   // return data show
-  const ShowPages = (start, end) => {
+  const ShowPages = () => {
+    // get information search
+    const key = Object.keys(searchResult);
+    const index = Object.keys(searchResult).indexOf(type);
+    const value = Object.values(searchResult);
+
     if (pageResult) {
-      return pageResult
-        .slice(start ? start : 0, end ? end : 5)
-        .filter(
-          (o) =>
-            o.eyes.toLowerCase().includes(searchResult.text) ||
-            o.attribute.toLowerCase().includes(searchResult.text)
-        );
+      return key.includes(type)
+        ? pageResult
+            .slice(start, end)
+            .filter(
+              (o) =>
+                o.eyes.toLowerCase().includes(value[index]) ||
+                o.attribute.toLowerCase().includes(value[index])
+            )
+        : pageResult.slice(start, end);
     }
   };
 
@@ -100,7 +133,7 @@ const SearchResult = ({ type }) => {
     <div className="search-results-container">
       <div className="search-results-wrap">
         <Style.GeneSearchResults>
-          {ShowPages(pageNumber.start, pageNumber.end).map((o, index) => (
+          {ShowPages().map((o, index) => (
             <Style.GeneSearchResult key={index}>
               <Style.container>
                 <h2>
@@ -137,9 +170,7 @@ const SearchResult = ({ type }) => {
             <Style.pagination>
               <Style.resultsDescription className="results-description">
                 {/* Check length page & show information page */}
-                {`Showing ${pageNumber.start} - ${
-                  pageResult.length > 5 ? pageNumber.end : pageResult.length
-                } of ${pageResult.length}`}
+                {`Showing ${start} - ${total > 5 ? end : total} of ${total}`}
               </Style.resultsDescription>
               <Style.paginationOptions>
                 <div
