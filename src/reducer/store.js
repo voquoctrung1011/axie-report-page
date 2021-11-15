@@ -75,6 +75,7 @@ const reducerSlice = createSlice({
         country: "",
       },
     ],
+    listChoose: [],
     pageNumber: {
       all: { start: 0, end: 5 },
       allR1: { start: 0, end: 5 },
@@ -99,13 +100,21 @@ const reducerSlice = createSlice({
     setPageNumber: (state, action) => {
       state.pageNumber = action.payload;
     },
+    setListChoose: (state, action) => {
+      state.listChoose = action.payload;
+    },
   },
 });
 
 export default reducerSlice.reducer;
 
 //action
-export const { setListCheckbox, setShowAll, setSearchResult, setPageNumber } =
-  reducerSlice.actions;
+export const {
+  setListCheckbox,
+  setShowAll,
+  setSearchResult,
+  setPageNumber,
+  setListChoose,
+} = reducerSlice.actions;
 
 export const paginationResult = async (dispatch) => {};

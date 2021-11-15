@@ -125,3 +125,42 @@ export const svg = styled.svg`
   height: 20px;
   margin-right: 10px;
 `;
+export const selectedGenes = styled.div`
+  margin-top: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+`;
+export const SelectedGeneCard = styled.div`
+  margin: 0 10px 10px 0;
+  display: flex;
+  align-items: center;
+  padding: 7px 19px;
+  cursor: pointer;
+  background: #282b39;
+  border: 1px solid #282b39;
+  border-radius: 20px;
+  border-color: green;
+  &:hover {
+    transform: scale(1.03);
+  }
+`;
+export const geneId = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  color: #91939a;
+  margin-right: 20px;
+  margin-bottom: 0;
+`;
+export const deleteIconWrap = styled.svg`
+  height: 16px;
+  width: 26px;
+  padding-left: 10px;
+  border-left: 1px solid #3a3f50;
+`;
+export const selectIconWrap = styled.svg`
+  height: 16px;
+  width: 26px;
+  padding-left: 10px;
+`;
