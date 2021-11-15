@@ -126,11 +126,13 @@ const SearchResult = ({ type }) => {
     if (typeData) {
       return key.includes(type)
         ? typeData
-            .slice(start, end)
+            ?.slice(start, end)
             .filter(
               (o) =>
-                o.eyes.toLowerCase().includes(value[index]) ||
-                o.attribute.toLowerCase().includes(value[index])
+                o?.name?.toLowerCase().includes(value[index]) ||
+                o?.class?.toLowerCase().includes(value[index]) ||
+                o?.partId?.toLowerCase().includes(value[index]) ||
+                o?.specialGenes?.toLowerCase().includes(value[index])
             )
         : typeData.slice(start, end);
     }
@@ -206,9 +208,11 @@ const SearchResult = ({ type }) => {
                         )
                     )}
                   </h2>
-                  <Style.axieClass>{o.attribute}</Style.axieClass>
-                  <Style.axiePartId>{o.eyes}</Style.axiePartId>
-                  <Style.axieSpecialGene>{o.country}</Style.axieSpecialGene>
+                  <Style.axieClass>{o.class}</Style.axieClass>
+                  <Style.axiePartId>{o.partId}</Style.axiePartId>
+                  <Style.axieSpecialGene>
+                    {o.specialGenes}
+                  </Style.axieSpecialGene>
                 </Style.container>
               </Style.GeneSearchResult>
             ))}
