@@ -46,11 +46,7 @@
     transform: rotate(360deg);
   }
 }
-.HomePage {
-  padding: 10px;
-  max-width: 600px;
-  margin: 0 auto;
-}
+
 h2 {
   font-weight: 700;
   font-size: 16px;
@@ -95,17 +91,17 @@ h2 {
   line-height: 16px;
   font-weight: 400;
 }
-.non-pagination-actions-wrap,
+/* .non-pagination-actions-wrap,
 .r1-gene-filter-wrap,
 .r2-gene-filter-wrap,
 .cta-wrap Button:hover {
   background: none;
-}
-.ant-pagination-item,
+} */
+/* .ant-pagination-item,
 .ant-pagination-options {
   display: none;
-}
-.ant-pagination-total-text {
+} */
+/* .ant-pagination-total-text {
   font-weight: 700;
   font-size: 16px;
   line-height: 22px;
@@ -120,6 +116,22 @@ h2 {
   border-color: #fff0;
   color: #036cfc;
   font-size: 13px;
+} */
+.ant-table {
+  background: #282b39;
+  color: #fff;
+}
+.ant-table-tbody > tr > td {
+  border-bottom: 1px solid #3a3f50;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td,
+td.ant-table-column-sort {
+  cursor: pointer;
+  background: none;
+}
+.ant-table-thead th.ant-table-column-has-sorters:hover {
+  background: #ffffff;
 }
 .FormSection .FormSection-header-wrap {
   border-bottom: 1px solid #3a3f50;

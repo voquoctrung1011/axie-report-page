@@ -1,10 +1,29 @@
 import React from "react";
 import { Input } from "antd";
 import * as Style from "../../../styles/AllAxieStatsForm";
+import { useSelector, useDispatch } from "react-redux";
+import { setCreateFilter } from "../../../reducer/store";
 
 const iWidth = { width: "130px", minWidth: "unset" };
 
 const AllAxieStatsForm = () => {
+  const dispatch = useDispatch();
+  const { createFilter } = useSelector((state) => state.store);
+
+  const handleChangeValue = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(
+      setCreateFilter({
+        ...createFilter,
+        data: {
+          ...createFilter.data,
+          [name]: value,
+        },
+      })
+    );
+  };
+
   return (
     <Style.AllAxieStatsForm>
       <Style.FormSection>
@@ -21,7 +40,9 @@ const AllAxieStatsForm = () => {
                 <Input
                   type="number"
                   placeholder="21"
+                  name="hp_threshold"
                   style={iWidth}
+                  onChange={handleChangeValue}
                   id="minimum-hp"
                   defaultValue="21"
                 />
@@ -35,7 +56,9 @@ const AllAxieStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
+                  name="speed_threshold"
                   style={iWidth}
+                  onChange={handleChangeValue}
                   placeholder="21"
                   id="minimum-speed"
                   defaultValue="21"
@@ -49,6 +72,8 @@ const AllAxieStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
+                  name="skill_threshold"
+                  onChange={handleChangeValue}
                   style={iWidth}
                   placeholder="21"
                   id="minimum-skill"
@@ -64,6 +89,8 @@ const AllAxieStatsForm = () => {
                 <Input
                   type="number"
                   style={iWidth}
+                  onChange={handleChangeValue}
+                  name="morale_threshold"
                   placeholder="21"
                   id="minimum-morale"
                   defaultValue="21"

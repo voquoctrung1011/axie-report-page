@@ -12,6 +12,9 @@ export const container = styled.div`
 `;
 export const logoWrap = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 `;
 export const rhsWrap = styled.div`
   display: flex;
@@ -41,5 +44,18 @@ export const svg = styled.svg`
 export const H1 = styled.h1`
   color: #fff;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 25px;
+  margin: 0;
+`;
+export const Homepage = styled.div`
+  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+`;
+export const ListFilter = styled.div`
+  max-width: 1700px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-top: 30px;
 `;

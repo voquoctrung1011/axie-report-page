@@ -1,16 +1,47 @@
 import React from "react";
 import { Input } from "antd";
 import * as Style from "../../../styles/AllPriceForm";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setCreateFilter } from "../../../reducer/store";
 const iWidth = { width: "180px", minWidth: "unset" };
 
 const AllPriceForm = () => {
+  const dispatch = useDispatch();
+  const { createFilter } = useSelector((state) => state.store);
+
+  const handleChangeValue = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    if (name === "filterName") {
+      dispatch(
+        setCreateFilter({
+          ...createFilter,
+          [name]: value,
+        })
+      );
+    } else {
+      dispatch(
+        setCreateFilter({
+          ...createFilter,
+          data: {
+            ...createFilter.data,
+            [name]: value,
+          },
+        })
+      );
+    }
+  };
   return (
     <>
+      <Style.FormSectionHeaderWrap>
+        <Style.Title>Filter Name</Style.Title>
+      </Style.FormSectionHeaderWrap>
       <div className="input-wrap">
         <Input
           placeholder="Enter name ..."
-          style={{ width: "100%", margin: "40px 0" }}
+          style={{ width: "100%", marginBottom: "30px" }}
+          name="filterName"
+          onChange={handleChangeValue}
           id="minimum-hp"
         />
       </div>
@@ -30,9 +61,10 @@ const AllPriceForm = () => {
                     type="number"
                     id="minimum-sale-price"
                     placeholder="0"
+                    onChange={handleChangeValue}
                     style={iWidth}
+                    name="min_price"
                     defaultValue="0"
-                    className=""
                   />
                   <span>ETH</span>
                 </div>
@@ -47,6 +79,8 @@ const AllPriceForm = () => {
                     id="maximum-sale-price"
                     style={iWidth}
                     placeholder="0.02"
+                    onChange={handleChangeValue}
+                    name="max_price"
                     defaultValue=""
                     className=""
                   />

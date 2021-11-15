@@ -1,9 +1,28 @@
 import React from "react";
 import * as Style from "../../../styles/AllPurityForm";
-
+import { Input } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { setCreateFilter } from "../../../reducer/store";
 const iWidth = { width: "120px", minWidth: "unset" };
 
 const AllPurityForm = () => {
+  const dispatch = useDispatch();
+  const { createFilter, listChoose } = useSelector((state) => state.store);
+
+  const handleChangeValue = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(
+      setCreateFilter({
+        ...createFilter,
+        data: {
+          ...createFilter.data,
+          [name]: value,
+        },
+      })
+    );
+  };
+
   return (
     <Style.AllPurityForm>
       <Style.FormSection>
@@ -17,9 +36,11 @@ const AllPurityForm = () => {
                 <label htmlFor="minimum-pureness">Minimum pureness</label>
               </h2>
               <div className="input-wrap">
-                <input
+                <Input
                   type="number"
                   style={iWidth}
+                  name="pureness_threshold"
+                  onChange={handleChangeValue}
                   id="minimum-pureness"
                   placeholder="1"
                   defaultValue="0"
@@ -31,9 +52,11 @@ const AllPurityForm = () => {
                 <label htmlFor="minimum-purity">Minimum purity</label>
               </h2>
               <div className="input-wrap">
-                <input
+                <Input
                   type="number"
                   style={iWidth}
+                  name="quality_threshold"
+                  onChange={handleChangeValue}
                   id="minimum-purity"
                   placeholder="50"
                   defaultValue="0"

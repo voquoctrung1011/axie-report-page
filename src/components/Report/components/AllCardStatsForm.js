@@ -2,10 +2,28 @@
 import React from "react";
 import { Input } from "antd";
 import * as Style from "../../../styles/AllCardStatsForm";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setCreateFilter } from "../../../reducer/store";
 const iWidth = { width: "100px", minWidth: "unset" };
 
 const AllCardStatsForm = () => {
+  const dispatch = useDispatch();
+  const { createFilter } = useSelector((state) => state.store);
+
+  const handleChangeValue = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    dispatch(
+      setCreateFilter({
+        ...createFilter,
+        data: {
+          ...createFilter.data,
+          [name]: value,
+        },
+      })
+    );
+  };
+
   return (
     <Style.AllCardStatsForm>
       <Style.FormSection>
@@ -23,7 +41,9 @@ const AllCardStatsForm = () => {
               <div className="input-wrap">
                 <Input
                   type="number"
+                  name="attack_threshold"
                   style={iWidth}
+                  onChange={handleChangeValue}
                   placeholder="0"
                   id="minimum-attack"
                   defaultValue="0"
@@ -40,6 +60,8 @@ const AllCardStatsForm = () => {
                 <Input
                   type="number"
                   style={iWidth}
+                  name="defense_threshold"
+                  onChange={handleChangeValue}
                   placeholder="0"
                   id="minimum-defence"
                   defaultValue="0"

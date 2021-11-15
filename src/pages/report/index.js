@@ -1,11 +1,12 @@
 import React from "react";
-import FillForm from "../../components/Report";
+import Report from "../../components/Report";
+import * as Style from "../../styles/Header";
 
 const ReportPage = () => {
   return (
-    <div className="HomePage">
-      <FillForm />
-    </div>
+    <Style.Homepage>
+      <Report />
+    </Style.Homepage>
   );
 };
 
